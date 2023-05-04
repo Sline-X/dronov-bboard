@@ -46,9 +46,7 @@ class HomeController extends Controller
 
     public function updateBb(Request $request, Bb $bb)
     {
-        $bb->fill(['title' => $request->title,
-            'content' => $request->content,
-            'price' => $request->price]);
+        $bb->fill(['title' => $request->title, 'content' => $request->content, 'price' => $request->price]);
         $bb->save();
         return redirect()->route('home');
     }
