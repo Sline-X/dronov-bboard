@@ -52,4 +52,15 @@ class HomeController extends Controller
         $bb->save();
         return redirect()->route('home');
     }
+
+    public function showDeleteBbForm(Bb $bb)
+    {
+        return view('bb_delete', ['bb' => $bb]);
+    }
+
+    public function destroyBb(Bb $bb)
+    {
+        $bb->delete();
+        return redirect()->route('home');
+    }
 }
