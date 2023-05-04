@@ -13,7 +13,7 @@
     <div class="form-group">
         <label for="txtContent">Описание</label>
         <textarea name="content" id="txtContent" class="form-control"
-                  row="3" {{ $bb->content }}></textarea>
+                  row="3" {{ $bb->description }}></textarea>
     </div>
     <div class="form-group">
         <label for="txtPrice">Цена</label>

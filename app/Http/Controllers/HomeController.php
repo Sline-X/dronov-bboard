@@ -8,6 +8,12 @@ use App\Models\Bb;
 
 class HomeController extends Controller
 {
+    private const BB_VALIDATOR = [
+        'title' => 'required|max:50',
+        'description' => 'required',
+        'price' => 'required|numeric'
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -34,19 +40,19 @@ class HomeController extends Controller
 
     public function storeBb(Request $request) {
         Auth::user()->bbs()->create(['title' => $request->title,
-                                     'content' => $request->content,
+                                     'description' => $request->description,
                                      'price' => $request->price]);
         return redirect()->route('home');
     }
 
-    public function shpwEditBbForm(Bb $bb)
+    public function showEditBbForm(Bb $bb)
     {
         return view('bb_edit', ['bb' => $bb]);
     }
 
     public function updateBb(Request $request, Bb $bb)
     {
-        $bb->fill(['title' => $request->title, 'content' => $request->content, 'price' => $request->price]);
+        $bb->fill(['title' => $request->title, 'description' => $request->description, 'price' => $request->price]);
         $bb->save();
         return redirect()->route('home');
     }
