@@ -11,7 +11,7 @@ class Bb extends Model
     //use HasFactory;
 
     protected $fillable = ['title', 'description', 'price'];
-
+    //protected $guarded = ['ISBN']
     public function user() {
         return $this->belongsTo(User::class);
     }

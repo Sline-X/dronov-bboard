@@ -10,7 +10,7 @@ class BbsController extends Controller
 {
     public function index()
     {
-        //$bbs = Bb::latest()->get();
+        //$bbs = BbsResourceController::latest()->get();
         //$s = "Объявления\r\n\r\n";
         //foreach ($bbs as $bb) {
         //    $s .= $bb->title . "\r\n";
@@ -19,13 +19,13 @@ class BbsController extends Controller
         //}
         //return response($s)
         //        ->header('Content-Type', 'text/plain');
-    
+
         $context = ['bbs' => Bb::latest()->get()];
         return view('index', $context);
     }
 
     public function detail(Bb $bb) {
-        //$bb = Bb::find($bb);
+        //$bb = BbsResourceController::find($bb);
         //$s = $bb->title . "\r\n\r\n";
         //$s .= $bb->content . "\r\n";
         //$s .= $bb->price . " руб. \r\n";
