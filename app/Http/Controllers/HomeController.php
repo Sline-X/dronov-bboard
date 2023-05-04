@@ -14,6 +14,13 @@ class HomeController extends Controller
         'price' => 'required|numeric'
     ];
 
+    private const BB_ERROR_MESSAGES = [
+        'price.required' => 'Раздавать товары бесплатно нельзя',
+        'required' => 'Заполните это поле',
+        'max' => 'Значение не должно быть длиннее :max символов',
+        'numeric' => 'Введите число'
+    ];
+
     /**
      * Create a new controller instance.
      *
@@ -39,9 +46,11 @@ class HomeController extends Controller
     }
 
     public function storeBb(Request $request) {
-        Auth::user()->bbs()->create(['title' => $request->title,
-                                     'description' => $request->description,
-                                     'price' => $request->price]);
+        $validated = $request->validate(self::BB_VALIDATOR,
+            self::BB_ERROR_MESSAGES);
+        Auth::user()->bbs()->create(['title' => $validated['title'],
+                                     'description' => $validated['description'],
+                                     'price' => $validated['price']]);
         return redirect()->route('home');
     }
 
@@ -52,7 +61,11 @@ class HomeController extends Controller
 
     public function updateBb(Request $request, Bb $bb)
     {
-        $bb->fill(['title' => $request->title, 'description' => $request->description, 'price' => $request->price]);
+        $validated = $request->validate(self::BB_VALIDATOR,
+            self::BB_ERROR_MESSAGES);
+        $bb->fill(['title' => $validated['title'],
+            'description' => $validated['description'],
+            'price' => $validated['price']]);
         $bb->save();
         return redirect()->route('home');
     }
