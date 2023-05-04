@@ -3,7 +3,7 @@
 @section('title', 'Мои объявления')
 
 @section('main')
-<p class="text-right"><a href="">Добавить отбъявление</a></p>
+<p class="text-right"><a href="{{ route('bb.add') }}">Добавить отбъявление</a></p>
 @if (count($bbs) > 0)
 <table class="table table-striped">
     <thead>
