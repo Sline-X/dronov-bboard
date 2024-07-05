@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BbsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/bb', function()
+{
+    return 'piska';
+});
+Route::get('/bb/get', [BbsController::class, 'getElement']);
+
+//BbsController
+

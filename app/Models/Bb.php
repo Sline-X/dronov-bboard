@@ -8,7 +8,7 @@ use App\Models\User;
 
 class Bb extends Model
 {
-    //use HasFactory;
+    use HasFactory;
 
     protected $fillable = ['title', 'description', 'price'];
     //protected $guarded = ['ISBN']

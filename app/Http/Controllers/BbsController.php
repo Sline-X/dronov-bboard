@@ -33,4 +33,12 @@ class BbsController extends Controller
         //return response($s)->header('Content-Type', 'text/plain');
         return view('detail', ['bb' => $bb]);
     }
+
+    public function getElement(Request $request)
+    {
+        $dParam = $request->d;
+//        Dolore modi
+        $result = Bb::where('description', 'like', 'Dolore modi%')->count();
+        dd($result);
+    }
 }

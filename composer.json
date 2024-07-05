@@ -20,7 +20,8 @@
         "nunomaduro/collision": "^7.0",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.0",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "vimeo/psalm": "^5.18"
     },
     "autoload": {
         "psr-4": {
